@@ -23,7 +23,7 @@ export default class LoadingScreen extends Component {
   }
 
   navigateToLogin = () =>
-    storage.clear().then(() => this.props.navigation.navigate('Auth'));
+    storage.clear().then(() => this.props.navigation.navigate('App'));
 
   render() {
     return (

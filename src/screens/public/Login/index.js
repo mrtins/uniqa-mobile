@@ -73,12 +73,12 @@ export default class LoginScreen extends Component {
   render() {
     return (
       <Container>
-        <ImageBackground source={loginBg} style={{ width: '100%', height: '100%' }}>
+        {/* <ImageBackground source={loginBg} style={{ width: '100%', height: '100%' }}> */}
           <Content contentContainerStyle={{ justifyContent: 'center' }}>
-            <Image
+            {/* <Image
               source={loginLogo}
               style={{ flex: 1, alignSelf: 'center', resizeMode: 'center', width: '85%' }}
-            />
+            /> */}
           </Content>
           <Content contentContainerStyle={{ flex: 2, justifyContent: 'flex-end', marginBottom: 55 }}>
             <View style={styles.formInputView}>
@@ -109,7 +109,7 @@ export default class LoginScreen extends Component {
             </View>
 
           </Content>
-        </ImageBackground>
+        {/* </ImageBackground> */}
       </Container>
     );
   }

@@ -13,7 +13,7 @@ export default MainStackNavigator = createStackNavigator(
     Home: { name: 'Home', screen: Home },
   },
   {
-    initialRouteName: 'Drawer',
+    initialRouteName: 'Home',
     headerMode: 'none',
   }
 );

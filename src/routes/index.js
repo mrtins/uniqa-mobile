@@ -1,8 +1,11 @@
 import {
-  createStackNavigator,
   createSwitchNavigator,
   createAppContainer,
 } from 'react-navigation';
+
+import {
+  createStackNavigator,
+} from 'react-navigation-stack';
 
 import Login from '../screens/public/Login';
 import Loading from '../screens/public/Loading';
