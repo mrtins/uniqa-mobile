@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import storage from 'src/utils/storage';
+import storage from '../../../utils/storage';
 
 import {
   Container,

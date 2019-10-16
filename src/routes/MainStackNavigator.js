@@ -1,14 +1,14 @@
 import {
   createStackNavigator,
-} from 'react-navigation';
+} from 'react-navigation-stack';
 
-import DrawerNavigator from './DrawerNavigator';
+// import DrawerNavigator from './DrawerNavigator';
 
 import Home from '../screens/Home';
 
 export default MainStackNavigator = createStackNavigator(
   {
-    Drawer: { screen: DrawerNavigator },
+    // Drawer: { screen: DrawerNavigator },
 
     Home: { name: 'Home', screen: Home },
   },

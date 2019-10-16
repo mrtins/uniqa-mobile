@@ -19,14 +19,10 @@ import {
 import {
   Container,
   Content,
+  Button
 } from 'native-base';
 
 import Icon from 'react-native-vector-icons/FontAwesome';
-
-import ButtonLogin from './components/ButtonLogin';
-
-import loginBg from 'assets/img/thumb-video-login.png';
-import loginLogo from 'assets/img/logo-login.png';
 
 export default class LoginScreen extends Component {
   static navigationOptions = {
@@ -37,8 +33,6 @@ export default class LoginScreen extends Component {
     super(props);
 
     this.state = {
-      matricula: '5306323',
-      password: 'AHJ456',
       loading: false,
     };
 
@@ -48,18 +42,7 @@ export default class LoginScreen extends Component {
   }
 
   login() {
-    if (this.state.matricula === '' || this.state.password === '') {
-      this.setAlert('Campos inválidos', 'Preencha todos os campos');
-    } else {
-      this.setLoading(true);
-
-      api.auth({ username: this.state.matricula, password: this.state.password }).then(async token => {
-        await storage.setItem('@token', token);
-        await storage.setItem('@matricula', this.state.matricula);
-
-        return this.props.navigation.navigate('LoadingScreen');
-      }).catch(err => this.handleError(err))
-    }
+    return this.props.navigation.navigate('LoadingScreen');
   }
 
   handleError(err) {
@@ -122,7 +105,7 @@ export default class LoginScreen extends Component {
             </View>
 
             <View style={styles.btnContainer}>
-              <ButtonLogin onPress={this.login} />
+              <Button onPress={this.login} />
             </View>
 
           </Content>
