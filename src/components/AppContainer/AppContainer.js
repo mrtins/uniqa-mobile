@@ -17,7 +17,7 @@ import FooterTabs from './FooterTabs';
 const AppContainer = (props) => {
   return (
     <Container style={styles.container}>
-      <HeaderBar navigation={props.navigation} title={props.headerTitle} menu={props.headerMenu} />
+      <HeaderBar navigation={props.navigation} title={props.headerTitle} goBack={props.goBackMenu} />
       <View style={{ flex: 1 }}>
         {props.children}
       </View>

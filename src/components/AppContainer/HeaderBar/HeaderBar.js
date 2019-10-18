@@ -28,7 +28,7 @@ const HeaderBar = (props) => {
     >
       <Left>
         <Button onPress={navigatorClick} transparent>
-          {props.menu ? <Icon name='menu' /> : <Icon name='arrow-back' />}
+          {props.goBack ? <Icon name='arrow-back' /> : null}
         </Button>
       </Left>
       <Body>
