@@ -11,36 +11,40 @@ import {
   Right,
   Title,
   Button,
-  Icon
+  Icon,
+  Text
 } from 'native-base';
 
 const HeaderBar = (props) => {
-  navigatorClick = () => {
-    props.menu ?
-      props.navigation.toggleDrawer() :
-      props.navigation.goBack();
+  goBackClick = () => {
+    ;
   }
 
   return (
     <Header
       style={styles.container}
-      androidStatusBarColor='#004F9F'
+      androidStatusBarColor='#477687'
     >
       <Left>
-        <Button onPress={navigatorClick} transparent>
+        <Button onPress={() => props.navigation.goBack()} transparent>
           {props.goBack ? <Icon name='arrow-back' /> : null}
         </Button>
       </Left>
       <Body>
-        <Title style={{ textAlign: 'center' }}>{props.title}</Title>
+        <Title style={{ alignSelf: 'center' }}>{props.title}</Title>
       </Body>
+      <Right>
+        <Button onPress={null} transparent>
+          {props.filter ? <Icon name='filter-variant' type="MaterialCommunityIcons" /> : null}
+        </Button>
+      </Right>
     </Header>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#004F9F',
+    backgroundColor: '#64A6BD',
   }
 });
 

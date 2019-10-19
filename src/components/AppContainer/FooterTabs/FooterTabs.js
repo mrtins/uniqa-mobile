@@ -15,11 +15,11 @@ import TabList from '../../../routes/TabList';
 
 const FooterTabs = (props) => {
   return (
-    <Footer style={styles.footerStyle}>
-      <FooterTab>
+    <Footer style={styles.footerStyle} >
+      <FooterTab style={{backgroundColor: '#64A6BD'}}>
         {TabList.map((tab, i) =>
           <Button active={props.navigation.state.routeName === tab.routeName || props.stackedScreen === tab.routeName} onPress={() => props.navigation.navigate(tab.routeName)}>
-            <Icon name={tab.icon} type={tab.iconType} />
+            <Icon name={tab.icon} type={tab.iconType} style={{color: '#fff'}} />
           </Button>
         )}
       </FooterTab>
@@ -30,7 +30,7 @@ const FooterTabs = (props) => {
 const styles = StyleSheet.create({
   footerStyle: {
     borderTopColor: '#c5c5c5',
-    borderTopWidth: 1
+    borderTopWidth: 1,
   }
 });
 
