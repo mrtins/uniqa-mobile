@@ -10,22 +10,30 @@ import {
   Item,
   Input,
   Icon,
+  Col,
+  Text,
+  Grid
 } from 'native-base';
 
 import ActionButton from 'react-native-action-button';
 
 import AppContainer from '../../components/AppContainer';
-import QAContainer from '../../components/QAContainer';
+import QuestionTitle from '../../components/QuestionTitle';
+
+import styles from './styles';
 
 const Question = (props) => {
   tron.log(props)
   const question = props.navigation.getParam('question');
+  tron.log(question)
 
   return (
     <>
       <AppContainer navigation={props.navigation} headerTitle="Uni Q&A" goBackMenu>
-        <QAContainer question={question} isQuestion />
-        {/* <QAContainer question={question} /> */}
+        <QuestionTitle question={question} />
+        <View style={{ marginTop: 25 }}>
+          <Text>{question.description}</Text>
+        </View>
 
         <ActionButton
           buttonColor="#377D96"
