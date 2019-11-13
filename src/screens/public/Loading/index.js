@@ -7,7 +7,7 @@ import {
   Body,
 } from 'native-base';
 
-import LoadingSpinner from 'src/components/LoadingSpinner';
+import LoadingSpinner from 'components/utils/LoadingSpinner';
 
 export default class LoadingScreen extends Component {
 

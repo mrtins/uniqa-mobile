@@ -18,11 +18,12 @@ import {
   Container,
   Row
 } from 'native-base';
+import LineView from '../utils/LineView';
 
-const QuestionTitle = (props) => {
+const QuestionContainer = (props) => {
   return (
-    <View style={{ display: 'flex', marginTop: 10 }}>
-      <View style={{ flexDirection: 'row', paddingLeft: 15, paddingRight: 15 }}>
+    <View style={{ display: 'flex', }}>
+      <View style={{ flexDirection: 'row', paddingLeft: 15, paddingRight: 15, marginBottom: 15 }}>
         <View style={{ flexDirection: 'column', justifyContent: 'center', alignItems: 'center', top: 10 }}>
           <Icon name="arrow-up-drop-circle" type="MaterialCommunityIcons" style={{ color: '#bbc0c4' }} />
           <Text>{props.question.votes}</Text>
@@ -32,14 +33,14 @@ const QuestionTitle = (props) => {
         <View style={{ justifyContent: 'center', alignContent: 'center' }}>
           <Row>
             <View style={{ marginLeft: 15, marginRight: 50, flexDirection: 'column' }}>
-              <Text style={styles.questionTitle}>
+              <Text style={styles.questionTitle} adjustsFontSizeToFit>
                 {props.question.title}
               </Text>
             </View>
           </Row>
 
-          <View style={{ marginTop: 10, marginLeft: 15 }}>
-            <Row>
+          <View style={{ marginLeft: 15 }}>
+            <View style={{ flexDirection: 'row' }}>
               {props.question.tags.map((tag, i) =>
                 <View key={i} style={{ backgroundColor: '#64A6BD', padding: 3, borderRadius: 4, marginRight: 5, height: 20 }}>
                   <Text style={{ fontSize: 10, color: '#fff' }}>
@@ -47,10 +48,17 @@ const QuestionTitle = (props) => {
                   </Text>
                 </View>
               )}
-            </Row>
+            </View>
           </View>
         </View>
       </View>
+
+      <LineView />
+
+      <View style={{ marginTop: 10, paddingLeft: 10, paddingRight: 10 }}>
+        <Text>{props.question.description}</Text>
+      </View>
+
     </View>
   );
 }
@@ -67,4 +75,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default QuestionTitle;
+export default QuestionContainer;

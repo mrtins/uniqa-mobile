@@ -1,6 +1,10 @@
 export const questionList = [
   {
     id: 1,
+    user: {
+      name: 'Vitor Martins',
+      title: 'Iniciante'
+    },
     title: 'Como comparar duas listas diferentes em Java?',
     description: 'Tenho duas listas que compartilham de um valor em comum entre elas. Eu queria que que esses objetos selecionados fossem filtrados para que ele seja adicionado em um outra lista',
     votes: 10,

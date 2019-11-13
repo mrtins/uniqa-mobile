@@ -17,10 +17,12 @@ import {
 
 import ActionButton from 'react-native-action-button';
 
-import AppContainer from '../../components/AppContainer';
-import QuestionTitle from '../../components/QuestionTitle';
+import AppContainer from 'components/AppContainer';
+import QuestionContainer from 'components/QuestionContainer';
+import BottomInfo from '../../components/BottomInfo';
 
 import styles from './styles';
+import { ScrollView } from 'react-native-gesture-handler';
 
 const Question = (props) => {
   tron.log(props)
@@ -30,19 +32,19 @@ const Question = (props) => {
   return (
     <>
       <AppContainer navigation={props.navigation} headerTitle="Uni Q&A" goBackMenu>
-        <QuestionTitle question={question} />
-        <View style={{ marginTop: 25 }}>
-          <Text>{question.description}</Text>
+        <View style={{ backgroundColor: '#fff', flex: 1 }}>
+          <QuestionContainer question={question} />
+
+          <View style={{ marginTop: 20 }} />
+          <BottomInfo question={question} />
+          <ActionButton
+            buttonColor="#377D96"
+            position="center"
+            size={42}
+            offsetY={16}
+            onPress={() => { console.log("hi") }}
+          />
         </View>
-
-        <ActionButton
-          buttonColor="#377D96"
-          position="center"
-          size={42}
-          offsetY={16}
-          onPress={() => { console.log("hi") }}
-        />
-
       </AppContainer>
     </>
   );
