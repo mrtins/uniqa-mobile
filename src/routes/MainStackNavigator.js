@@ -6,6 +6,7 @@ import {
 
 import Home from '../screens/Home';
 import Question from '../screens/Question';
+import FormScreen from '../screens/FormScreen';
 
 export default MainStackNavigator = createStackNavigator(
   {
@@ -13,6 +14,7 @@ export default MainStackNavigator = createStackNavigator(
 
     Home: { name: 'Home', screen: Home },
     Question: { name: 'Question', screen: Question },
+    FormScreen: { name: 'FormScreen', screen: FormScreen },
   },
   {
     initialRouteName: 'Home',

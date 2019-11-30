@@ -17,9 +17,7 @@ import { ScrollView } from 'react-native-gesture-handler';
 import LineView from '../../components/utils/LineView'
 
 const Question = (props) => {
-  tron.log(props)
   const question = props.navigation.getParam('question');
-  tron.log(question)
 
   return (
     <>
@@ -41,7 +39,7 @@ const Question = (props) => {
             position="center"
             size={42}
             offsetY={16}
-            onPress={() => { console.log("hi") }}
+            onPress={() => { props.navigation.push('FormScreen', { question: false }) }}
           />
         </View>
       </AppContainer>
