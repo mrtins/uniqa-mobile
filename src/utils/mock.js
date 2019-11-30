@@ -1,9 +1,9 @@
 export const questionList = [
   {
     id: 1,
-    user: {
-      name: 'Vitor Martins',
-      title: 'Iniciante'
+    usuario: {
+      nome: 'Vitor Martins',
+      titulo: 'Iniciante'
     },
     title: 'Como comparar duas listas diferentes em Java?',
     description: 'Tenho duas listas que compartilham de um valor em comum entre elas. Eu queria que que esses objetos selecionados fossem filtrados para que ele seja adicionado em um outra lista',
@@ -36,3 +36,27 @@ export const questionList = [
     date: '2 dias atrás',
   },
 ];
+
+export const answerList = [
+  {
+    id: 2,
+    resposta: "TEsteeeTEsteeeTEsteeeTEsteeeTEsteeeTEsteeeTEsteeeTEsteeeTEsteeeTEsteeeTEsteeeTEsteeeTEsteeeTEsteeeTEsteeeTEsteeeTEsteeeTEsteeeTEsteeeTEsteeeTEsteeeTEsteee",
+    dataPublicacao: "2019-11-30",
+    likes: null,
+    dislikes: null,
+    idUsuario: 1,
+    idPergunta: 1,
+    usuario: {
+      id: 1,
+      nomeUsuario: "teste",
+      nome: "Teste",
+      sobrenome: "Teste",
+      senha: "123",
+      dataNascimento: "2019-05-15",
+      experiencia: 0,
+      idCurso: 1,
+      idNivel: 1,
+      idPerfil: 1
+    },
+  },
+]

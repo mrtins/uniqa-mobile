@@ -3,26 +3,18 @@ import React, { useState } from 'react';
 
 import {
   View,
-  TouchableOpacity
 } from 'react-native';
-
-import {
-  Item,
-  Input,
-  Icon,
-  Col,
-  Text,
-  Grid
-} from 'native-base';
 
 import ActionButton from 'react-native-action-button';
 
 import AppContainer from 'components/AppContainer';
 import QuestionContainer from 'components/QuestionContainer';
 import BottomInfo from '../../components/BottomInfo';
+import AnswerContainer from '../../components/AnswerContainer/AnswerContainer';
 
-import styles from './styles';
+import { answerList } from '../../utils/mock';
 import { ScrollView } from 'react-native-gesture-handler';
+import LineView from '../../components/utils/LineView'
 
 const Question = (props) => {
   tron.log(props)
@@ -33,10 +25,17 @@ const Question = (props) => {
     <>
       <AppContainer navigation={props.navigation} headerTitle="Uni Q&A" goBackMenu>
         <View style={{ backgroundColor: '#fff', flex: 1 }}>
-          <QuestionContainer question={question} />
+          <ScrollView>
+            <QuestionContainer question={question} />
+            <BottomInfo content={question} />
+            <LineView />
 
-          <View style={{ marginTop: 20 }} />
-          <BottomInfo question={question} />
+            <View style={{ flex: 2 }}>
+              <AnswerContainer resposta={answerList[0]} />
+              <AnswerContainer resposta={answerList[0]} />
+            </View>
+          </ScrollView>
+
           <ActionButton
             buttonColor="#377D96"
             position="center"

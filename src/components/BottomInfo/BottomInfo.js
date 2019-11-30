@@ -23,23 +23,22 @@ import LineView from 'components/utils/LineView';
 
 const BottomInfo = (props) => {
   return (
-    <View style={{ flex: 1 }}>
-      <LineView />
-      <Grid style={{ paddingLeft: 10, paddingRight: 10, marginTop: 5, marginBottom: 5 }}>
+    <View style={{ flex: 1, marginTop: 10 }}>
+      <Grid style={{ paddingLeft: 10, paddingRight: 10, marginTop: 0, marginBottom: 5 }}>
         <Col size={2}>
           <View style={{ backgroundColor: 'blue', width: 40, padding: 10 }}>
-            <Text style={{ textAlign: 'center', color: '#fff' }}>{props.question.user.name.charAt(0)}</Text>
+            <Text style={{ textAlign: 'center', color: '#fff' }}>{props.content.usuario.nome.charAt(0)}</Text>
           </View>
         </Col>
 
         <Col size={6}>
           <View style={{ alignItems: 'flex-start', justifyContent: 'center' }}>
             <View style={{ flexDirection: 'row' }}>
-              <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#64A6BD' }}>{props.question.user.name}</Text>
+              <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#64A6BD' }}>{props.content.usuario.nome}</Text>
             </View>
 
             <View style={{ flexDirection: 'row' }}>
-              <Text style={{ fontSize: 12 }}>{props.question.user.title}</Text>
+              <Text style={{ fontSize: 12 }}>{props.content.usuario.titulo}</Text>
             </View>
           </View>
         </Col>
@@ -47,15 +46,14 @@ const BottomInfo = (props) => {
         <Col size={4}>
           <View style={{ alignItems: 'flex-end', justifyContent: 'center' }}>
             <View style={{ flexDirection: 'row' }}>
-              <Text style={{ fontSize: 12, fontWeight: 'bold', color: '#242729' }}>Perguntou em</Text>
+              <Text style={{ fontSize: 12, fontWeight: 'bold', color: '#242729' }}>{props.content.resposta ? "Respondeu em" : "Perguntou em"}</Text>
             </View>
             <View style={{ flexDirection: 'row' }}>
-              <Text style={{ fontSize: 12 }}>{props.question.date}</Text>
+              <Text style={{ fontSize: 12 }}>{props.content.date}</Text>
             </View>
           </View>
         </Col>
       </Grid>
-      <LineView />
     </View>
   );
 }
