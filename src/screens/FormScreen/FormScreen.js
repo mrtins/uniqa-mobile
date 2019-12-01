@@ -19,11 +19,12 @@ const FormScreen = (props) => {
         <ScrollView>
           <View style={{ backgroundColor: '#EAEAEA', flex: 1 }}>
             <Content padder>
-              <Form >
-                <Textarea style={{ backgroundColor: '#fff' }} rowSpan={10} bordered placeholder="Digite aqui" />
+              <Form>
+                <Textarea style={{ backgroundColor: '#fff' }} rowSpan={8} bordered placeholder={props.question ? "Digite sua pergunta aqui..." : "Digite sua reposta aqui..."} />
+                <Textarea style={{ backgroundColor: '#fff', height: 40 }} rowSpan={1} bordered placeholder="Tags: (java, spring, codigo)" />
               </Form>
 
-              <View style={{ flexDirection: 'row', justifyContent: 'space-evenly', marginTop: 15 }}>
+              <View style={{ flexDirection: 'row', justifyContent: 'space-evenly', marginTop: 10 }}>
                 <Button rounded light onPress={() => props.navigation.goBack()}>
                   <Text>Voltar</Text>
                 </Button>

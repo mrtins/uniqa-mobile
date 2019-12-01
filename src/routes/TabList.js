@@ -5,7 +5,7 @@ import {
 export default TabList = [
   {
     name: 'Home',
-    routeName: 'HomeScreen',
+    routeName: 'Home',
     icon: Platform.OS === 'android' ? 'question-answer' : 'ios-home',
     iconType: 'MaterialIcons'
   },
