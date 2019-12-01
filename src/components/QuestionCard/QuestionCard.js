@@ -16,6 +16,8 @@ import {
   Icon,
 } from 'native-base';
 
+import { formatarData } from '../../utils/date';
+
 const QuestionCard = (props) => {
   return (
     <View style={{ marginBottom: 3 }}>
@@ -64,7 +66,7 @@ const QuestionCard = (props) => {
 
                     <View style={{}}>
                       <Text style={{ fontSize: 14 }}>
-                        {props.pergunta.dataPublicacao}
+                        {formatarData(props.pergunta.dataPublicacao)}
                       </Text>
                     </View>
                   </View>

@@ -21,6 +21,8 @@ import {
 
 import LineView from 'components/utils/LineView';
 
+import { formatarData } from '../../utils/date';
+
 const BottomInfo = (props) => {
   return (
     <View style={{ flex: 1, marginTop: 10 }}>
@@ -49,7 +51,7 @@ const BottomInfo = (props) => {
               <Text style={{ fontSize: 12, fontWeight: 'bold', color: '#242729' }}>{props.content.resposta ? "Respondeu em" : "Perguntou em"}</Text>
             </View>
             <View style={{ flexDirection: 'row' }}>
-              <Text style={{ fontSize: 12 }}>{props.content.dataPublicacao}</Text>
+              <Text style={{ fontSize: 12 }}>{formatarData(props.content.dataPublicacao)}</Text>
             </View>
           </View>
         </Col>

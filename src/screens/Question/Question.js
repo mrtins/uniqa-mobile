@@ -1,5 +1,5 @@
 import tron from 'reactotron-react-native';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import {
   View,
@@ -29,6 +29,7 @@ const Question = (props) => {
 
   getListRespostas = () => {
     api.get(`/respostas/find-by-pergunta/${pergunta.id}`).then(data => {
+      
       setListaRespostas(data);
     }).catch(err => tron.error(err))
   }
