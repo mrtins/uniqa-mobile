@@ -28,15 +28,13 @@ const Home = (props) => {
   const [listaPerguntas, setListaPerguntas] = useState([]);
 
   useEffect(() => {
-    api.get('/perguntas').then(data => {
-      setListaPerguntas(data);
-    }).catch(err => tron.error(err))
+    getPerguntas();
   }, []);
 
-  listPerguntas = () => {
-    api.get('/perguntas').then(data => {
-      setListaPerguntas(data);
-    }).catch(err => tron.error(err))
+  async function getPerguntas() {
+    return api.get(`/perguntas`).then(perguntas => {
+      return setListaPerguntas(perguntas);
+    }).catch(err => tron.err(err));
   }
 
   return (

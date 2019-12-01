@@ -14,10 +14,24 @@ import AnswerContainer from '../../components/AnswerContainer/AnswerContainer';
 
 import { answerList } from '../../utils/mock';
 import { ScrollView } from 'react-native-gesture-handler';
+import LoadingSpinner from '../../components/utils/LoadingSpinner';
 import LineView from '../../components/utils/LineView'
+
+import api from '../../utils/api';
 
 const Question = (props) => {
   const pergunta = props.navigation.getParam('pergunta');
+  const [listaRespostas, setListaRespostas] = useState([]);
+
+  useEffect(() => {
+    getListRespostas();
+  }, []);
+
+  getListRespostas = () => {
+    api.get(`/respostas/find-by-pergunta/${pergunta.id}`).then(data => {
+      setListaRespostas(data);
+    }).catch(err => tron.error(err))
+  }
 
   return (
     <>
@@ -29,8 +43,11 @@ const Question = (props) => {
             <LineView />
 
             <View style={{ flex: 2 }}>
-              <AnswerContainer resposta={answerList[0]} />
-              <AnswerContainer resposta={answerList[0]} />
+              {!listaRespostas.length ? <LoadingSpinner /> : <></>}
+
+            {listaRespostas.map((resposta, i) =>
+                <AnswerContainer key={i} resposta={resposta} />
+              )}
             </View>
           </ScrollView>
 

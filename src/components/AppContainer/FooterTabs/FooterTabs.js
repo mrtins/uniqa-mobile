@@ -18,7 +18,7 @@ const FooterTabs = (props) => {
     <Footer style={styles.footerStyle} >
       <FooterTab style={{ backgroundColor: '#64A6BD' }}>
         {TabList.map((tab, i) =>
-          <Button style={{ backgroundColor: props.navigation.state.routeName === tab.routeName || props.stackedScreen === tab.routeName ? '#477687' : '#64A6BD' }} onPress={() => props.navigation.navigate(tab.routeName)}>
+          <Button style={{ backgroundColor: props.navigation.state.routeName === tab.routeName || props.stackedScreen === tab.routeName ? '#5196AE' : '#64A6BD' }} onPress={() => props.navigation.navigate(tab.routeName)}>
             <Icon name={tab.icon} type={tab.iconType} style={{ color: '#fff' }} />
           </Button>
         )}

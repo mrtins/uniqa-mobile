@@ -45,6 +45,13 @@ const QuestionCard = (props) => {
 
                   <View style={{ flexDirection: 'row', justifyContent: 'space-between', top: 30 }}>
 
+                    <View style={{ flexDirection: 'row' }}>
+                      <View style={{ backgroundColor: '#64A6BD', padding: 3, borderRadius: 4, marginRight: 5 }}>
+                        <Text style={{ fontSize: 10, color: '#fff' }}>
+                          #programação
+                        </Text>
+                      </View>
+                    </View>
                     {/* <View style={{ flexDirection: 'row' }}>
                       {props.question.tags.map((tag, i) =>
                         <View key={i} style={{ backgroundColor: '#64A6BD', padding: 3, borderRadius: 4, marginRight: 5 }}>
