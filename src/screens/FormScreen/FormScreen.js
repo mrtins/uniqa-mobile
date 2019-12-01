@@ -22,54 +22,39 @@ const FormScreen = (props) => {
   const [tags, setTags] = useState();
   const [loading, setLoading] = useState(false);
 
-  submitPergunta = (titulo, pergunta, tags) => {
-    if (!titulo && !pergunta) {
-      return Toast.show({
-        text: "Preencha os campos de pergunta e descrição",
-        buttonText: "Ok",
-        type: "warning",
-        duration: 3000
-      });
+  submitPergunta = (titulo, descricao, tags) => {
+    if (!titulo && !descricao && !tags) {
+      return handleResponse("Preencha todos os campos", "warning")
     }
 
     setLoading(true);
 
+    let splitTags = tags.split(',')
+    let listTags = [];
+    splitTags.map(tag => listTags.push({ nomeTag: tag }))
+
     const body = {
-      titulo,
-      pergunta,
-      idUsuario: 1,
-      dataPublicacao: new Date()
+      pergunta: {
+        titulo,
+        pergunta: descricao,
+        idUsuario: 1,
+        dataPublicacao: new Date()
+      },
+      tags: listTags
     };
 
-    return api.post(`/perguntas`, body).then(res => {
-      setLoading(false);
-      Toast.show({
-        text: "Pergunta realizada",
-        buttonText: "Ok",
-        type: "success",
-        duration: 3000
-      });
 
+    api.post(`/perguntas/ask-question`, body).then(res => {
+      handleResponse("Pergunta realizada", "success")
       return props.navigation.replace('Home');
-    }).catch(err => {
-      setLoading(false)
-      return Toast.show({
-        text: "Ocorreu um erro interno!",
-        buttonText: "Ok",
-        type: "danger",
-        duration: 3000
-      });
-    });
+    }).catch(err => handleResponse());
+
+    setLoading(false);
   }
 
   submitResposta = (resposta) => {
     if (!resposta) {
-      return Toast.show({
-        text: "Preencha todos os campos",
-        buttonText: "Ok",
-        type: "warning",
-        duration: 3000
-      });
+      handleResponse("Preencha todos os campos", "warning")
     }
 
     setLoading(true);
@@ -83,23 +68,18 @@ const FormScreen = (props) => {
 
     return api.post(`/respostas`, body).then(res => {
       setLoading(false);
-      Toast.show({
-        text: "Pergunta respondida",
-        buttonText: "Ok",
-        type: "success",
-        duration: 3000
-      });
-
+      handleResponse("Pergunta respondida", "success")
       return props.navigation.replace('Question', { pergunta });
-    }).catch(err => {
-      tron.log(err)
-      setLoading(false)
-      return Toast.show({
-        text: "Ocorreu um erro interno!",
-        buttonText: "Ok",
-        type: "danger",
-        duration: 3000
-      });
+    }).catch(err => handleResponse());
+  }
+
+  handleResponse = (string, type) => {
+    setLoading(false);
+    return Toast.show({
+      text: string || "Ocorreu um erro inesperado!",
+      buttonText: "Ok",
+      type: type || "danger",
+      duration: 3000
     });
   }
 

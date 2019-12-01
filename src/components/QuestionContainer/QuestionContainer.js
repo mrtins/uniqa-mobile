@@ -28,7 +28,7 @@ const QuestionContainer = (props) => {
       <View style={{ flexDirection: 'row', paddingLeft: 15, paddingRight: 15, marginBottom: 15 }}>
         <View style={{ flexDirection: 'column', justifyContent: 'center', alignItems: 'center', top: 10 }}>
           <Icon name="arrow-up-drop-circle" type="MaterialCommunityIcons" style={{ color: '#bbc0c4' }} />
-          <Text>{props.pergunta.likes}</Text>
+          <Text>{props.pergunta.likes || 0}</Text>
           <Icon name="arrow-down-drop-circle" type="MaterialCommunityIcons" style={{ color: '#bbc0c4' }} />
         </View>
 
