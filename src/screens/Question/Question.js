@@ -17,15 +17,15 @@ import { ScrollView } from 'react-native-gesture-handler';
 import LineView from '../../components/utils/LineView'
 
 const Question = (props) => {
-  const question = props.navigation.getParam('question');
+  const pergunta = props.navigation.getParam('pergunta');
 
   return (
     <>
       <AppContainer navigation={props.navigation} headerTitle="Uni Q&A" goBackMenu>
         <View style={{ backgroundColor: '#fff', flex: 1 }}>
           <ScrollView>
-            <QuestionContainer question={question} />
-            <BottomInfo content={question} />
+            <QuestionContainer pergunta={pergunta} />
+            <BottomInfo content={pergunta} />
             <LineView />
 
             <View style={{ flex: 2 }}>

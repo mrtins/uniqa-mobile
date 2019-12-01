@@ -1,5 +1,5 @@
 import tron from 'reactotron-react-native';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import {
   View,
@@ -17,12 +17,28 @@ import ActionButton from 'react-native-action-button';
 import AppContainer from '../../components/AppContainer';
 import QuestionCard from '../../components/QuestionCard/QuestionCard';
 
+import LoadingSpinner from '../../components/utils/LoadingSpinner';
+
 import { questionList } from '../../utils/mock';
 import { ScrollView } from 'react-native-gesture-handler';
 
+import api from '../../utils/api';
+
 const Home = (props) => {
-  const [fabActive, setFabActive] = useState(false);
-  
+  const [listaPerguntas, setListaPerguntas] = useState([]);
+
+  useEffect(() => {
+    api.get('/perguntas').then(data => {
+      setListaPerguntas(data);
+    }).catch(err => tron.error(err))
+  }, []);
+
+  listPerguntas = () => {
+    api.get('/perguntas').then(data => {
+      setListaPerguntas(data);
+    }).catch(err => tron.error(err))
+  }
+
   return (
     <>
       <AppContainer navigation={props.navigation} headerTitle="Uni Q&A" filter>
@@ -38,11 +54,13 @@ const Home = (props) => {
             </View>
           </View>
 
-          {questionList.map((question, i) =>
-            <QuestionCard key={i} question={question} onPress={() => props.navigation.push('Question', { question })} />
+          {listaPerguntas.length === 0 ?
+            <LoadingSpinner /> : <></>
+          }
+
+          {listaPerguntas.map((pergunta, i) =>
+            <QuestionCard key={i} pergunta={pergunta} onPress={() => props.navigation.push('Question', { pergunta })} />
           )}
-
-
 
         </ScrollView>
         <ActionButton

@@ -49,7 +49,7 @@ const BottomInfo = (props) => {
               <Text style={{ fontSize: 12, fontWeight: 'bold', color: '#242729' }}>{props.content.resposta ? "Respondeu em" : "Perguntou em"}</Text>
             </View>
             <View style={{ flexDirection: 'row' }}>
-              <Text style={{ fontSize: 12 }}>{props.content.date}</Text>
+              <Text style={{ fontSize: 12 }}>{props.content.dataPublicacao}</Text>
             </View>
           </View>
         </Col>

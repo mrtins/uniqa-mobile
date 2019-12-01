@@ -26,15 +26,14 @@ export default {
 }
 
 const request = async (reqConfig) => {
-  const token = await storage.getItem('@token');
-  const headers = { 'Authorization': `Bearer ${token.access_token}` };
+  // const token = await storage.getItem('@token');
+  // const headers = { 'Authorization': `Bearer ${token.access_token}` };
 
   if (reqConfig.method === 'get') {
     return instance.request({
       method: reqConfig.method,
       url: reqConfig.url,
       params: reqConfig.data,
-      headers
     }).then(res => res.data)
       .catch(err => handleError(err, reqConfig));
   } else {
@@ -42,7 +41,6 @@ const request = async (reqConfig) => {
       method: reqConfig.method,
       url: reqConfig.url,
       data: reqConfig.data,
-      headers
     }).then(res => res.data)
       .catch(err => handleError(err))
   }
