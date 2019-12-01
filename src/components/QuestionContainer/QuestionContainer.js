@@ -34,12 +34,14 @@ const QuestionContainer = (props) => {
 
         <View style={{ justifyContent: 'center', alignContent: 'center' }}>
           <Row>
-            <View style={{ marginLeft: 15, marginRight: 50, flexDirection: 'column' }}>
+            <View style={{ marginLeft: 15, marginRight: 50, marginTop: 20, flexDirection: 'column' }}>
               <Text style={styles.questionTitle} adjustsFontSizeToFit>
                 {props.pergunta.titulo}
               </Text>
             </View>
           </Row>
+
+          <LineView />
 
           {/* <View style={{ marginLeft: 15 }}>
             <View style={{ flexDirection: 'row' }}>

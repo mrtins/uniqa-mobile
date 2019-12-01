@@ -30,10 +30,10 @@ const QuestionCard = (props) => {
               <Col size={3}>
                 <View style={{ width: 70 }}>
                   <View style={{ padding: 5 }}>
-                    <Text style={{ textAlign: 'center', fontSize: 12 }}>{props.pergunta.likes}{"\n"}votos</Text>
+                    <Text style={{ textAlign: 'center', fontSize: 12 }}>{props.pergunta.likes || 0}{"\n"}votos</Text>
                   </View>
                   <View style={{ backgroundColor: 'rgba(51, 202, 127, 0.8)', borderRadius: 2, padding: 4, marginTop: 4 }}>
-                    <Text style={{ textAlign: 'center', fontSize: 12, color: '#fff' }}>{props.pergunta.respostas ? props.pergunta.respostas : 0}{"\n"}respostas</Text>
+                    <Text style={{ textAlign: 'center', fontSize: 12, color: '#fff' }}>{props.numRespostas || 0}{"\n"}respostas</Text>
                   </View>
                 </View>
               </Col>

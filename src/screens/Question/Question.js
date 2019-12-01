@@ -21,7 +21,9 @@ import api from '../../utils/api';
 
 const Question = (props) => {
   const pergunta = props.navigation.getParam('pergunta');
+
   const [listaRespostas, setListaRespostas] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     getListRespostas();
@@ -29,9 +31,9 @@ const Question = (props) => {
 
   getListRespostas = () => {
     api.get(`/respostas/find-by-pergunta/${pergunta.id}`).then(data => {
-      
+      setLoading(false);
       setListaRespostas(data);
-    }).catch(err => tron.error(err))
+    }).catch(err => setLoading(false))
   }
 
   return (
@@ -44,7 +46,7 @@ const Question = (props) => {
             <LineView />
 
             <View style={{ flex: 2 }}>
-              {!listaRespostas.length ? <LoadingSpinner /> : <></>}
+              {loading ? <LoadingSpinner /> : <></>}
 
             {listaRespostas.map((resposta, i) =>
                 <AnswerContainer key={i} resposta={resposta} />

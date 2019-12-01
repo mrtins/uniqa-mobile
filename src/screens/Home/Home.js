@@ -19,21 +19,23 @@ import QuestionCard from '../../components/QuestionCard/QuestionCard';
 
 import LoadingSpinner from '../../components/utils/LoadingSpinner';
 
-import { questionList } from '../../utils/mock';
 import { ScrollView } from 'react-native-gesture-handler';
 
 import api from '../../utils/api';
 
 const Home = (props) => {
   const [listaPerguntas, setListaPerguntas] = useState([]);
+  const [listaRespostas, setListaRespostas] = useState([]);
 
   useEffect(() => {
     getPerguntas();
   }, []);
 
   async function getPerguntas() {
-    return api.get(`/perguntas`).then(perguntas => {
-      return setListaPerguntas(perguntas);
+    let listagem = [];
+
+    api.get(`/perguntas`).then(perguntas => {
+      setListaPerguntas(perguntas.sort((a, b) => b.id - a.id))
     }).catch(err => tron.err(err));
   }
 
@@ -57,7 +59,7 @@ const Home = (props) => {
           }
 
           {listaPerguntas.map((pergunta, i) =>
-            <QuestionCard key={i} pergunta={pergunta} onPress={() => props.navigation.push('Question', { pergunta })} />
+            <QuestionCard key={i} pergunta={pergunta} numRespostas={0} onPress={() => props.navigation.push('Question', { pergunta })} />
           )}
 
         </ScrollView>
