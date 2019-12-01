@@ -68,7 +68,7 @@ const Home = (props) => {
           position="center"
           size={42}
           offsetY={16}
-          onPress={() => { props.navigation.push('FormScreen', { question: true }) }}
+          onPress={() => { props.navigation.push('FormScreen', { isNewQuestion: true }) }}
         />
       </AppContainer>
     </>

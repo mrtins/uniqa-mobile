@@ -40,7 +40,7 @@ const BottomInfo = (props) => {
             </View>
 
             <View style={{ flexDirection: 'row' }}>
-              <Text style={{ fontSize: 12 }}>{props.content.usuario.titulo}</Text>
+              <Text style={{ fontSize: 12 }}>{props.content.usuario.titulo || "Calouro"}</Text>
             </View>
           </View>
         </Col>

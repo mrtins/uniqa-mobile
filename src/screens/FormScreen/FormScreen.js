@@ -14,7 +14,9 @@ import Spinner from 'react-native-loading-spinner-overlay';
 import api from '../../utils/api';
 
 const FormScreen = (props) => {
-  const question = props.navigation.getParam('question');
+  const isNewQuestion = props.navigation.getParam('isNewQuestion');
+  const pergunta = props.navigation.getParam('pergunta');
+
   const [titulo, setTitulo] = useState();
   const [text, setText] = useState();
   const [tags, setTags] = useState();
@@ -42,7 +44,7 @@ const FormScreen = (props) => {
     return api.post(`/perguntas`, body).then(res => {
       setLoading(false);
       Toast.show({
-        text: question ? "Pergunta realizada" : "Respondido",
+        text: "Pergunta realizada",
         buttonText: "Ok",
         type: "success",
         duration: 3000
@@ -52,7 +54,48 @@ const FormScreen = (props) => {
     }).catch(err => {
       setLoading(false)
       return Toast.show({
-        text: "Preencha todos os campos!",
+        text: "Ocorreu um erro interno!",
+        buttonText: "Ok",
+        type: "danger",
+        duration: 3000
+      });
+    });
+  }
+
+  submitResposta = (resposta) => {
+    if (!resposta) {
+      return Toast.show({
+        text: "Preencha todos os campos",
+        buttonText: "Ok",
+        type: "warning",
+        duration: 3000
+      });
+    }
+
+    setLoading(true);
+
+    const body = {
+      idPergunta: pergunta.id,
+      idUsuario: 1,
+      resposta,
+      dataPublicacao: new Date()
+    };
+
+    return api.post(`/respostas`, body).then(res => {
+      setLoading(false);
+      Toast.show({
+        text: "Pergunta respondida",
+        buttonText: "Ok",
+        type: "success",
+        duration: 3000
+      });
+
+      return props.navigation.replace('Question', { pergunta });
+    }).catch(err => {
+      tron.log(err)
+      setLoading(false)
+      return Toast.show({
+        text: "Ocorreu um erro interno!",
         buttonText: "Ok",
         type: "danger",
         duration: 3000
@@ -67,14 +110,14 @@ const FormScreen = (props) => {
           visible={loading}
           textContent={'Carregando...'}
           animation="fade"
-          textStyle={{color: '#fff'}}
+          textStyle={{ color: '#fff' }}
         />
 
         <ScrollView>
           <View style={{ backgroundColor: '#EAEAEA', flex: 1 }}>
             <Content padder>
               <Form>
-                {question ?
+                {isNewQuestion ?
                   <Textarea
                     onChangeText={(titulo) => setTitulo(titulo)}
                     style={{ backgroundColor: '#fff', height: 40 }}
@@ -89,21 +132,29 @@ const FormScreen = (props) => {
                   style={{ backgroundColor: '#fff' }}
                   rowSpan={8}
                   bordered
-                  placeholder={question ? "Descreva sua pergunta aqui..." : "Digite sua reposta aqui..."} />
-                <Textarea
-                  onChangeText={(tags) => setTags(tags)}
-                  style={{ backgroundColor: '#fff', height: 40 }}
-                  rowSpan={1}
-                  bordered
-                  placeholder="Tags: (java, spring, codigo)" />
+                  placeholder={isNewQuestion ? "Descreva sua pergunta aqui..." : "Digite sua resposta aqui..."} />
+
+                {isNewQuestion ?
+                  <Textarea
+                    onChangeText={(tags) => setTags(tags)}
+                    style={{ backgroundColor: '#fff', height: 40 }}
+                    rowSpan={1}
+                    bordered
+                    placeholder="Tags: (java, spring, codigo)" />
+                  : <></>
+                }
               </Form>
 
               <View style={{ flexDirection: 'row', justifyContent: 'space-evenly', marginTop: 10 }}>
                 <Button rounded light onPress={() => props.navigation.goBack()}>
                   <Text>Voltar</Text>
                 </Button>
-                <Button onPress={() => submitPergunta(titulo, text, tags)} rounded style={{ backgroundColor: question ? '#64A6BD' : '#4BB543' }}>
-                  <Text>{question ? "Perguntar" : "Responder"}</Text>
+                <Button
+                  style={{ backgroundColor: isNewQuestion ? '#64A6BD' : '#4BB543' }}
+                  rounded
+                  onPress={() => isNewQuestion ? submitPergunta(titulo, text, tags) : submitResposta(text)}
+                >
+                  <Text>{isNewQuestion ? "Perguntar" : "Responder"}</Text>
                 </Button>
               </View>
             </Content>

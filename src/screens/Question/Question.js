@@ -48,7 +48,7 @@ const Question = (props) => {
             <View style={{ flex: 2 }}>
               {loading ? <LoadingSpinner /> : <></>}
 
-            {listaRespostas.map((resposta, i) =>
+              {listaRespostas.map((resposta, i) =>
                 <AnswerContainer key={i} resposta={resposta} />
               )}
             </View>
@@ -59,7 +59,7 @@ const Question = (props) => {
             position="center"
             size={42}
             offsetY={16}
-            onPress={() => { props.navigation.push('FormScreen', { question: false }) }}
+            onPress={() => { props.navigation.push('FormScreen', { pergunta }) }}
           />
         </View>
       </AppContainer>
